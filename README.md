@@ -12,7 +12,7 @@ The [Reuse Tool](https://reuse.software/) must be used for your samples project.
 3. The README.md file (this file):
 Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
 
-# [Title]
+# SAP BTP Integration Suite Integration Flows for Ariba Spend Analysis
 <!-- Please include descriptive title -->
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
@@ -20,7 +20,11 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
+Power up business content for SAP Analytics Cloud and SAP Ariba Spend Analysis using SAP Integration Suite.
+
+The sample integration flows in this repository demonstrate how to use SAP BTP Integration Suite to pull data from the SAP Ariba Analytical Reporting API, process it into SAP Data Warehouse Cloud, and analyze it using the SAP Analytics Cloud Spend Analysis business content. 
+
+Watch a [high level overview video of the business content] (https://share.video.sap.com/media/1_a3htg2ip) that you will be unlocking. 
 
 ## Requirements
 
