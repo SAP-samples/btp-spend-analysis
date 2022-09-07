@@ -40,9 +40,12 @@ The solution consists of the prebuilt business content for Data Warehouse Cloud 
 
 ![alt text](/Tutorial/images/OverviewMarketecture.png)
 
-## Requirements
 
 ## Download and Installation
+
+Integration Flows are attached as a .zip to this release.  All SQL scripts are found in the /src/SQL dir
+
+This git repository contains all Integration Flows, HANA SQL Scripts and documentation needed for the Intelligent Spend Analytics Discovery Mission.  The integration is specific to the Ariba Spend Analysis entitlement and provides a way for BTP Cloud Integration to pull data from the Ariba Analytical API, process it into SAP Data Warehouse Cloud so that the SAP Analytics Cloud Spend Analysis business content can be used.
 
 ### Step 1: [Solution Overview and Architecture](/Tutorial/01-Solution-Overview-and-Architecture)
 ### Step 2: [Review Prerequisites and Resources](/Tutorial/00-Prerequisites-and-Resources)
