@@ -25,7 +25,7 @@ The solution consists of the prebuilt business content for Data Warehouse Cloud 
 
 **Solution Diagram**
 
-![alt text](/Tutorial/images/OverviewMarketecture.png)
+![Alt text](/Tutorial/images/OverviewMarketecture.png)
 
 
 ## Download and Installation
