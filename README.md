@@ -23,7 +23,7 @@ After following this Discovery Mission, you will have deployed the Data Warehous
 **How you get there - What is the solution**
 The solution consists of the prebuilt business content for Data Warehouse Cloud and SAP Analytics Cloud to allow you visibility into your Spend data; a custom Integration Flow that orchestrates the transportation of data from Ariba to Data Warehouse Cloud.
 
-**Solution Diagram
+**Solution Diagram**
 
 ![alt text](/Tutorial/images/OverviewMarketecture.png)
 
