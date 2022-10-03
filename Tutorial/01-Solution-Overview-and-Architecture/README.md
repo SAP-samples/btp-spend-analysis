@@ -14,7 +14,7 @@ The components in this end to end Integration are the following:
 
 First understand the components at play in this Integration Flow.  Ariba contains the source data, Cloud Integration Suite will be orchestrating the data transfer, Data Warehouse Cloud is the target destination for the data and SAP Analytics Cloud is the visualization and analytical layer sitting on top of that. 
 
-![Alt text](/Tutorial/images/OverviewMarketecture.png)
+![Alt text](../images/OverviewMarketecture.png)
 
 The asynchronous Ariba Analytical API can deliver large volumes of data for the requesting application.  The application first submits a job to the Ariba analytical API telling it which table and filter conditions to fulfill.  Ariba then constructs a resultset, packages up the response into Zip files and provides the addresses of those zips to the requesting application.  Each zip file can contain up to 50,000 rows of data and if the overall response is larger than 500,000 rows (10 zips), a second Page of up to 10 zips is created and the address of that page and those zip names is provided.
 
@@ -27,7 +27,7 @@ Pulls the Files to Cloud Integration Suite, Unzips the files, Builds an XML blob
 After pushing all the response data to Data Warehouse Cloud as XML, kicks off Data Warehouse Cloud stored procedures to unpack the XML to the appropriate Table and Columns in the HANA Cloud layer of Data Warehouse Cloud
 The Data Warehouse Cloud views and SAP Analytics Cloud dashboards then make use of the Ariba data to provide rich analytical capabilities for the Spend data.
 
-![Alt text](/Tutorial/images/DetailedMarketecture.png)
+![Alt text](../images/DetailedMarketecture.png)
 
 
 For detailed documentation about the asynchronous Ariba Analytical API please review the documentation here: https://help.sap.com/docs/ARIBA_APIS/bf0cde439a0142fbbaf511bfac5b594d/6bb9d440d99b45938a75e9218650e7de.html
