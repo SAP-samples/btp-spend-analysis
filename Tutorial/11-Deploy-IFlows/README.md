@@ -1,6 +1,6 @@
 ## Deploy Integration Flows
 
-Download the Integration Flow package here https://github.tools.sap/I819235/btp_spend_analytics/blob/main/src/Flows/Ariba_Spend_Analysis.zip to a folder on your computer.  You will need this file in the steps below, so make note of where it is.
+Download the Integration Flow package [here](https://github.com/SAP-samples/btp-spend-analysis/archive/refs/tags/sap.zip) to a folder on your computer.  You will need this file in the steps below, so make note of where you download it.
 
 This package contains 62 Integration Flows.  They break down as follows:
 
@@ -12,19 +12,19 @@ The Manager Flows can be used as a centralized location to configure date/time p
 
 1. From the main screen in SAP Integration Suite, click the 'Design, Develop and Operate Integration Scenarios' tile:  
 
-![alt text](/Tutorial/images/ISuite_Import1.png)
+![CIS Import](../images/ISuite_Import1.png)
 
 2. Select the 'Build and Develop Integration Content' icon from the left menu bar  
 
-![alt text](/Tutorial/images/ISuite_Import2.png)
+![CIS Import](../images/ISuite_Import2.png)
 
 3. In the top right of the screen, click Import  
 
-![alt text](/Tutorial/images/ISuite_Import3.png)
+![CIS Import](../images/ISuite_Import3.png)
 
 4. Go to the Configure option of each iFlow with name containing ”_1_” and change the config params like dates, APIKEY, etc (screenshot below)
  
-![alt text](/Tutorial/images/CISLane_DeployIFLOW2.png)
+![CIS Import](../images/CISLane_DeployIFLOW2.png)
  
 
 5 Trigger “Dimension Tables” interface, Deploy iflow -> “SAP_1_Ariba_Dimension_Tables”
