@@ -30,4 +30,4 @@ The Data Warehouse Cloud views and SAP Analytics Cloud dashboards then make use 
 ![Alt text](../images/DetailedMarketecture.png)
 
 
-[For detailed documentation about the asynchronous Ariba Analytical API please review the documentation here:](https://help.sap.com/docs/ARIBA_APIS/bf0cde439a0142fbbaf511bfac5b594d/6bb9d440d99b45938a75e9218650e7de.html)
+For detailed documentation about the asynchronous Ariba Analytical API please review the documentation [here:](https://help.sap.com/docs/ARIBA_APIS/bf0cde439a0142fbbaf511bfac5b594d/6bb9d440d99b45938a75e9218650e7de.html)
