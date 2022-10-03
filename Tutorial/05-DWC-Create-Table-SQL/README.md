@@ -28,7 +28,7 @@ Perform the following steps for each of the SQL Scripts
 5. Click RUN (green circled arrow in the console)
 
 
-![alt text](/Tutorial/images/DWCLane_CreateTable1.png)
+![DWC Table Create](../images/DWCLane_CreateTable1.png)
  
 
 Repeat those 5 steps for each of the 10 downloaded SQL script files to create all the base tables.
