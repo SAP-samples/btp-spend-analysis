@@ -1,7 +1,7 @@
 ## Data Warehouse Cloud & SAP Analytics Cloud overview
 Data Warehouse Cloud is the target destination for the data being pulled from the Ariba API, and the Business Content we are activating in Data Warehouse Cloud is the SAP Ariba: SPEND ANALYSIS package. 
 
-Documentation for this package is located here:  https://help.sap.com/doc/4b618244ad5f4fbb8423d08996f8b891/cloud/en-US/SAP_Data_Warehouse_Cloud_Content.pdf  in section 4.2
+Documentation for this package is located [here](https://help.sap.com/doc/4b618244ad5f4fbb8423d08996f8b891/cloud/en-US/SAP_Data_Warehouse_Cloud_Content.pdf) in section 4.2
 
 At a high level, the content contains:
 
@@ -10,7 +10,7 @@ At a high level, the content contains:
 - Data Warehouse Cloud Inbound Tables – will be built as part of the next steps in this mission
  
 
-![alt text](/Tutorial/images/DWCLane_Overview1.png)
+![DWC Lanes Overview](../images/DWCLane_Overview1.png)
 
 
 To get the content working the following steps must be followed:
