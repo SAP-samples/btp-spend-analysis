@@ -5,15 +5,15 @@ Now that the HANA Cloud tables (Input Layer) have been successfully created, we 
 Navigate to the Repository Explorer and Select the SAP & Partner Content Space
 
  
-![alt text](/Tutorial/images/DWCLane_DeployContent1.png) 
+![DWC Deploy](../images/DWCLane_DeployContent1.png) 
 
 If you’ve downloaded other business content packages into this space, you can narrow down the list of views to be deployed by selecting the ‘Not Deployed’ filter in the search pane.
 
-![alt text](/Tutorial/images/DWCLane_DeployContent2.png) 
+![DWC Deploy](../images/DWCLane_DeployContent2.png) 
 
 To Deploy a view, you will click on the View Name which will launch you into the Data Builder screen for the View.  Inside of the Data Builder, you will click on the Deploy button for the view*
 
-![alt text](/Tutorial/images/DWCLane_DeployContent3.png)
+![DWC Deploy](../images/DWCLane_DeployContent3.png)
  
 
 *Avoid navigating back and forth from the list of views to the data builder when deploying these views by Right Clicking on the view name in the list and ‘open in new tab’.  After you deploy the view, you can close that tab.
