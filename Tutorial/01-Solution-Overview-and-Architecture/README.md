@@ -12,13 +12,17 @@ The components in this end to end Integration are the following:
 
 ### Overview
 
-First understand the components at play in this Integration Flow.  Ariba contains the source data, Cloud Integration Suite will be orchestrating the data transfer, Data Warehouse Cloud is the target destination for the data and SAP Analytics Cloud is the visualization and analytical layer sitting on top of that. 
+This section helps you to get a first understanding of the components that interact during the operation of the integration scenario.
+-	SAP Ariba contains the source data.
+-	SAP Integration Suite orchestrates the data transfer.
+-	SAP Data Warehouse Cloud is the target destination for the data.
+- SAP Analytics Cloud provides the visualization and analytical layer on top of the other components.
 
 ![Alt text](../images/OverviewMarketecture.png)
 
-The asynchronous Ariba Analytical API can deliver large volumes of data for the requesting application.  The application first submits a job to the Ariba analytical API telling it which table and filter conditions to fulfill.  Ariba then constructs a resultset, packages up the response into Zip files and provides the addresses of those zips to the requesting application.  Each zip file can contain up to 50,000 rows of data and if the overall response is larger than 500,000 rows (10 zips), a second Page of up to 10 zips is created and the address of that page and those zip names is provided.
+The asynchronous Ariba Analytical API can deliver large volumes of data for the requesting application.  The application first submits a job to the Ariba analytical API.  The job provides the information on which table and filter conditions to fulfill.  After this, SAP Ariba constructs a result set, packages up the response as archive (.zip) files, and provides the requesting application with the addresses of the archive files.  Each zip file can contain up to 50,000 data rows.  If the overall response is larger than 500,000 rows (10 zips), a second page of up to 10 zips is created.  Furthermore, the address of that page and the names of the .zip files are provided.
 
-The Integration Scenario for Spend Analytics does the following:
+The Integration Scenario for Spend Analytics performs the following steps:
 
 - Submits a Job to Ariba requesting the 8 Dimension tables and 2 Fact tables required for the Data Warehouse Cloud/SAP Analytics Cloud Business Content.
 - Polls Ariba to determine when the Ariba response has finished and is ready to return the Pages and Zips for the response
