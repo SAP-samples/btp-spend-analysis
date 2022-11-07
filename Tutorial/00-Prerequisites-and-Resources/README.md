@@ -27,18 +27,17 @@ Check with your Data Warehouse Cloud admin if you need to first configure standa
 
 ## SAP Analytics Cloud Prerequisites
 
-SAP Analytics Cloud is an all-in-one cloud product offered as software as a service (SaaS) for business intelligence (BI), planning, and predictive analytics.  It will be used as the visualization layer for the Spend Analytics solution.  Ensure that you have access to the SAP Analytics Cloud service, and that you have a user in the system with Read and Maintain permissions for ‘Lifecycle’ as you will need that to download content from the Content Network.  If you are using the SAP Analytics Cloud standard application roles, Admin and BI Admin have those permissions.
+SAP Analytics Cloud is an all-in-one cloud product offered as software as a service (SaaS) for business intelligence (BI), planning, and predictive analytics.  It will be used as the visualization layer for the Spend Analytics solution.  The Spend Analytics dashboards are delivered via the Business Content Network in SAP Analytics Cloud.  Information about accessing the Business Content in SAP Analytics Cloud can be found here:  [SAP Analytics Cloud Business Content Help](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/00f68c2e08b941f081002fd3691d86a7/078868f57f3346a98c3233207bd211c7.html)
 
-Further information about accessing the Business Content in SAP Analytics Cloud can be found here:  [SAP Analytics Cloud Business Content Help](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/00f68c2e08b941f081002fd3691d86a7/078868f57f3346a98c3233207bd211c7.html)
+Ensure that you have access to the SAP Analytics Cloud service, and that you have a user in the system.  Your user will need  Read and Maintain permissions for ‘Lifecycle’ as you be downloading content from the Business Content Network.  If you are using the SAP Analytics Cloud standard application roles, Admin and BI Admin have those permissions.
+
 
 ## Additional Resources
 
 List of additional guides for generalized help for the three solutions used in this integration:
 
- 
-
-- SAP Integration Suite [help](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_INTEGRATION_SUITE)
-- Data Warehouse Cloud [help](https://help.sap.com/docs/SAP_DATA_WAREHOUSE_CLOUD)
-- SAP Analytics Cloud [help](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD)
-- SAP Analytics Cloud Business Content [overview](https://community.sap.com/topics/cloud-analytics/business-content)
+- [SAP Integration Suite help](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_INTEGRATION_SUITE)
+- [Data Warehouse Cloud help](https://help.sap.com/docs/SAP_DATA_WAREHOUSE_CLOUD)
+- [SAP Analytics Cloud help](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD)
+- [SAP Analytics Cloud Business Content overview](https://community.sap.com/topics/cloud-analytics/business-content)
 
