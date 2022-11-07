@@ -2,7 +2,7 @@
 
 Before you can import any SAP or partner content package, the space into which the content will imported, needs to be created.   SAP Content is currently imported into the space SAP_CONTENT.
 
-Thus, please create a space with the technical name “SAP_CONTENT” once before you can import any content package. Please use the description “SAP Content”. In addition, you need to assign the user who will import the content to the space SAP_CONTENT
+Therefore, create a space with the technical name “SAP_CONTENT” before you can import any content package. Use the description “SAP Content”. In addition, assign the user who will import the content to the space SAP_CONTENT
 
 You will need the Administrator role to create a space.
 
