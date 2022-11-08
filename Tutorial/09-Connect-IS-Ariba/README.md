@@ -1,4 +1,4 @@
-## Connect Cloud Integration Suite to Ariba
+## Connect SAP Integration Suite to SAP Ariba
 
 Security Materials are endpoints we need to create to allow flow of data from the source system. You will need to create a User Credentials (the access token) and then an OAuth2 Client Credentials to call the data.
 
