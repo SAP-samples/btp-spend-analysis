@@ -15,12 +15,12 @@ Note: This naming convention for the connection is required for SAP Analytics Cl
 
 ## Download and Deploy the SAP Analytics Cloud Business Content
 
-SAP Analytics Cloud is used as the visualization layer for SAP Ariba Spend Analytics.  It comes with several prebuilt dashboards that provide you insights into your spend data.  Using SAP Analytics Cloud, navigate to the Content Network section and click the Business Content tile.
+SAP Analytics Cloud is used as the visualization layer for SAP Ariba Spend Analytics.  It comes with several prebuilt dashboards that provide you with insights into your spend data.  Using SAP Analytics Cloud, navigate to the Content Network section and click the Business Content tile.
 
 ![SAC Business Content](../images/SACLane_DLContent1.png)
 
-From the list of downloadable business content, click on the SAP Ariba: Spend Analysis entry.  This step opens a screen that provides more information on the the content.  There is no need to change the any import option.  Click Import to kick off the download.
+From the list of downloadable business content, click on the SAP Ariba: Spend Analysis entry.  This step opens a screen that provides more information on the the content.  There is no need to change the any import option.  Click Import to initiate the download.
 
-After you've been notified that the download is complete, navigate to Files -> My Files -> Public -> SAP_Content -> SAP_PROC_Spend_Analysis.  This step allows you to access all three dashboards from this package.  Consider that until we configure and run the integration flows, there's no data to populate these analytic dashboards. 
+After you've been notified that the download is complete, navigate to Files -> My Files -> Public -> SAP_Content -> SAP_PROC_Spend_Analysis.  This step allows you to access all three dashboards from this package.  Consider that until you configure and run the integration flows, there's no data to populate these analytic dashboards. 
 
-For more details about the SAP Analytics Cloud portion of the Spend Analysis business content, check out [Architecture and Abstract](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/42093f14b43c485fbe3adbbe81eff6c8/7815a7238338495eb47651b0c6aa3c4e.html)
+For more details about the SAP Analytics Cloud part of the Spend Analysis business content, check out [Architecture and Abstract](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/42093f14b43c485fbe3adbbe81eff6c8/7815a7238338495eb47651b0c6aa3c4e.html)
