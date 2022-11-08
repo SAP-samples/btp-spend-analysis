@@ -1,6 +1,8 @@
 ## Overview of Integration Flows
 
-There are 10 tables in Data Warehouse Cloud that need to be populated with Ariba data.  For each of those tables, there are 6 artifacts to accomplish the data transfer.  Here is the naming convention for the 6 artifacts and the purpose of each ( **_ARIBATABLE_** is a placeholder for the table in Data Warehouse Cloud)
+The scenario needs to populate 10 SAP Data Warehouse Cloud tables with SAP Ariba data.
+
+Note that for each table, 6 artifacts are required that accomplish the data transfer.  In the following list, you find the naming convention for these 6 artifacts and the purpose of each ( **_ARIBATABLE_** is a placeholder for the table in Data Warehouse Cloud)
 
 1. **_ARIBATABLE_**_1_AribaJobSubmit:   Submits the initial Job using ViewTemplateName to Ariba. 
 2. **_ARIBATABLE_**_2_AribaJobPaging:  If the ResultSet from the initial job requires more than 1 page as a response (more than 500K rows – 10 zips), this job automates the submission of additional pages automatically based on total pages needed to complete the request.
