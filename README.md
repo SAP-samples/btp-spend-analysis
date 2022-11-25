@@ -1,3 +1,4 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-spend-analysis)](https://api.reuse.software/info/github.com/SAP-samples/btp-spend-analysis)
 
 # SAP BTP Integration Suite Integration Flows for Ariba Spend Analysis
 <!-- Please include descriptive title -->
