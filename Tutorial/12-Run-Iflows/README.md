@@ -7,3 +7,7 @@ Once you've configured the overall integration scenario, test and verify if the 
 ### Monitoring the Integration Flows:
 
 After running the integration flows, go to the Monitor section.  You can monitor the integration flows and check if they succeed or fail.  If an error is displayed, you are able to look into the logs and find out what what caused the issue.
+
+### Modifying the externalized parameters:
+
+If you need to modify the externalized paramters, please deploy all six flows in order to make sure the changes are up to date. 
