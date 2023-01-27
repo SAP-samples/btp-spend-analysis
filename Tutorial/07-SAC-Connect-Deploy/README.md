@@ -8,7 +8,7 @@ Follow the steps described at [Live Data Connections to SAP Data Warehouse Cloud
 
 In particular, make sure that you perform the following tasks:
 - Establish a live connection to SAP Data Warehouse Cloud.
-- Name the connection “SAP Data Warehouse Cloud”. 
+- Name the connection “SAPDWC”. 
 - Verify that the views are displayed in SAP Data Warehouse Cloud from SAP Analytics Cloud.
 
 Note: This naming convention for the connection is required for SAP Analytics Cloud business content.
