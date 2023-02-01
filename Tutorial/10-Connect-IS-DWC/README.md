@@ -4,7 +4,7 @@ Create a JDBC connection to SAP Data Warehouse Cloud.  JDBC is the protocol over
 
 Log in to your SAP BTP cockpit and access SAP Integration Suite.  
 
-On the SAP Integration Suite homepage, select Design, Develop, and Operate Integration Scenarios.  As in the previous step click on the ‘Eye‘ icon (Monitor), then click on the JDBC Material tile in the Manage Security section.
+On the SAP Integration Suite homepage, select **Design, Develop, and Operate Integration Scenarios**.  As in the previous step click on the **Eye** icon (Monitor), then click on the **JDBC Material tile** in the Manage Security section.
 
 ![CIS Connection DWC](../images/CISLane_ConnectDWC1.png)
 
