@@ -1,6 +1,6 @@
 ## Deploy Integration Flows
 
-Click [this link](https://github.com/SAP-samples/btp-spend-analysis/archive/refs/tags/sap.zip) to download the integration flow package to the downloads folder on your computer.  You need this file in the following steps below, therefore make note of where you download it.
+Click [this link](https://github.com/SAP-samples/btp-spend-analysis/tree/main/src/Flows) to download the integration flow package to the downloads folder on your computer.  You need this file in the following steps below, therefore make note of where you download it.
 
 This integration package contains 62 Integration Flows:
 
