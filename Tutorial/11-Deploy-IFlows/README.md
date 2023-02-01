@@ -1,6 +1,6 @@
 ## Deploy Integration Flows
 
-Click [this link](https://github.com/SAP-samples/btp-spend-analysis/tree/main/src/Flows) to download the integration flow package to the downloads folder on your computer.  You need this file in the following steps below, therefore make note of where you download it.
+Click [this link](https://github.com/SAP-samples/btp-spend-analysis/tree/main/src/Flows) to download the integration flows to the downloads folder on your computer.  You need these files in the following steps below, therefore make note of where you download them.
 
 This integration package contains 62 Integration Flows:
 
@@ -11,19 +11,19 @@ You use the manager integration flows as a centralized objects to configure date
 
  
 
-1. From the SAP Integration Suite homepage, click the 'Design, Develop and Operate Integration Scenarios':
+1. From the SAP Integration Suite homepage, click the **Design, Develop and Operate Integration Scenarios**:
 
 ![CIS Import](../images/ISuite_Import1.png)
 
-2. Select the 'Build and Develop Integration Content' icon from the left menu bar  
+2. Select the **Build and Develop Integration Content** icon from the left menu bar  
 
 ![CIS Import](../images/ISuite_Import2.png)
 
-3. In the top right of the screen, select Import  
+3. In the top right of the screen, select **Import**  
 
 ![CIS Import](../images/ISuite_Import3.png)
 
-4. Go to the Configure option of each integration flow with a name containing ”_1_” and change the configuration parameters like dates, APIKEY, and so forth (as shown in the screenshot below)
+4. Go to the **Configure** option of each integration flow with a name containing ”_1_” and change the configuration parameters like dates, APIKEY, and so forth (as shown in the screenshot below)
  
 ![CIS Import](../images/CISLane_DeployIFLOW2.png)
  
