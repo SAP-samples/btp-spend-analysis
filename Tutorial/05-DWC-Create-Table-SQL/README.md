@@ -23,11 +23,11 @@ The other 10 scripts will create the temporary tables and stored procedures for 
 
 Perform the following steps for each SQL Script:
 
-1. Navigate to the SAP_Content Space in your SAP Data Warehouse Cloud system
-2. Navigate to Space Management -> Database Users section.  Select the previously created database user and launch “Open Database Explorer”.  A new tab with the SAP HANA Database Explorer for SAP HANA Cockpit is opened.
+1. Navigate to the **SAP_Content** Space in your SAP Data Warehouse Cloud system
+2. Navigate to **Space Management** -> **Database Users** section.  Select the previously created database user and launch **Open Database Explorer**.  A new tab with the SAP HANA Database Explorer for SAP HANA Cockpit is opened.
 3. Open a new SQL Console.
 4. Paste the SQL Script from the one of the downloaded files
-5. Click RUN (green circled arrow in the console)
+5. Click **RUN** (green circled arrow in the console)
 
 ![DWC Table Create](../images/DWCLane_CreateTable1.png)
 
