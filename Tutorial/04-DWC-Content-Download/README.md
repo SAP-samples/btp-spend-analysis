@@ -6,9 +6,9 @@ Navigate to the Content Network area of SAP Data Warehouse Cloud and click on **
 
 ![DWC Business Content DL](../images/DWCLane_DLContent1.png)
 
-The available business content is displayed.  Select the item “SAP Ariba: Spend Analysis”.  The Overview screen for this package is opened.
+The available business content is displayed.  Select the item **SAP Ariba: Spend Analysis**.  The Overview screen for this package is opened.
 
-If you download or deploy the  Spend Analysis package for the first time, you don't need to change any of the default settings under ‘Import Options’. You will deploy all views manually. Because of this, check that ‘Deploy after Import’ is not selected, and click “Import”
+If you download or deploy the  Spend Analysis package for the first time, you don't need to change any of the default settings under ‘Import Options’. You will deploy all views manually. Because of this, check that ‘Deploy after Import’ is not selected, and click **Import**
 
 ![DWC Business Content Import](../images/DWCLane_DLContent2.png)
 
