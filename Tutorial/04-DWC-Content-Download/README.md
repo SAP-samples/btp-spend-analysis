@@ -2,7 +2,7 @@
 
 As a prerequisite, you'll need to enable the time dimensions. The steps to do so are [here](https://help.sap.com/docs/SAP_DATA_WAREHOUSE_CLOUD/be5967d099974c69b77f4549425ca4c0/c5cfce4d22b04650b2fd6078762cdeb9.html)
 
-Navigate to the Content Network area of SAP Data Warehouse Cloud and click on **Business Content**.
+Navigate to the **Content Network** area of SAP Data Warehouse Cloud and click on **Business Content**.
 
 ![DWC Business Content DL](../images/DWCLane_DLContent1.png)
 
