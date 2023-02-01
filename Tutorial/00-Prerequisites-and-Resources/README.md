@@ -19,7 +19,7 @@ You can find further information about accessing the Business Content in Data Wa
 
 [Data Warehouse Cloud Business Content Help](https://help.sap.com/docs/SAP_DATA_WAREHOUSE_CLOUD/be5967d099974c69b77f4549425ca4c0/400078d689bf4454b3fc977a4e201c2f.html)
 
-SAP Data Warehouse Cloud is built on SAP HANA Cloud technolog.  To complete this integration scenario, you need database access in the SAP HANA Cloud layer.  You need a user with either the DW Space Administrator or the DW Integrator role to create the database user and grant them the privileges to write to the Open SQL schema. 
+SAP Data Warehouse Cloud is built on SAP HANA Cloud technology.  To complete this integration scenario, you need database access in the SAP HANA Cloud layer.  You need a user with either the DW Space Administrator or the DW Integrator role to create the database user and grant them the privileges to write to the Open SQL schema. 
 
 Further information about Privileges needed to create a Database User in Data Warehouse Cloud can be found here: [Data Warehouse Cloud Users/Privileges Help](https://help.sap.com/docs/SAP_DATA_WAREHOUSE_CLOUD/be5967d099974c69b77f4549425ca4c0/798e3fd6707940c3bd2219b2d1ebaac2.html?q=hana)
 
