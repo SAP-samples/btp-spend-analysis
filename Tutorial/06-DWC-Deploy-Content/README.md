@@ -1,6 +1,6 @@
-## Deploying SAP Data Warehouse Cloud Business Content
+## Deploying SAP Datasphere Business Content
 
-With the previous steps, you successfully created the SAP HANA Cloud tables (input layer). Now, you can deploy the SAP Data Warehouse Cloud views (harmonization layer and reporting layer).
+With the previous steps, you successfully created the SAP HANA Cloud tables (input layer). Now, you can deploy the SAP Datasphere views (harmonization layer and reporting layer).
 
 Navigate to the **Repository Explorer** and Select the **SAP & Partner Content Space**
 
