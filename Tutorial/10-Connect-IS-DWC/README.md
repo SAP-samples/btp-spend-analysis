@@ -1,6 +1,6 @@
-## Connect SAP Integration Suite to SAP Data Warehouse Cloud
+## Connect SAP Integration Suite to SAP Datasphere
 
-Create a JDBC connection to SAP Data Warehouse Cloud.  JDBC is the protocol over which the XML blobs are moved to SAP Data Warehouse Cloud. 
+Create a JDBC connection to SAP Datasphere.  JDBC is the protocol over which the XML blobs are moved to SAP Datasphere. 
 
 Log in to your SAP BTP cockpit and access SAP Integration Suite.  
 
@@ -12,7 +12,7 @@ Create a new JDBC connection by clicking the **Add** button.
 
 ![CIS Connection DWC](../images/CISLane_ConnectDWC2.png)
 
-Name the JDBC connection ‘Data Warehouse Cloud_HANACLOUD’, and fill in the JDBC URL, the User and the Password fields. Please take note that the host name needs a jdbc:sap:// prefix, and a :443 suffix. You can get this information from SAP Data Warehouse Cloud.  You find this information in Database User Details information box.  You can access this box by clicking the **info** icon to the right of the DB User in the Data Warehouse Cloud Space.
+Name the JDBC connection ‘Datasphere_HANACLOUD’, and fill in the JDBC URL, the User and the Password fields. Please take note that the host name needs a jdbc:sap:// prefix, and a :443 suffix. You can get this information from SAP Datasphere.  You find this information in Database User Details information box.  You can access this box by clicking the **info** icon to the right of the DB User in the Datasphere Space.
 
 ![CIS Connection DWC](../images/CISLane_ConnectDWC3.png) 
 
