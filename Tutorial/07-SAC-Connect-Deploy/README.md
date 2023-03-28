@@ -1,15 +1,15 @@
-## Connect your SAP Analytics Cloud service to SAP Data Warehouse Cloud
+## Connect your SAP Analytics Cloud service to SAP Datasphere
 
-To connect the SAP Analytics Cloud Spend Analysis visualization layer to the SAP Data Warehouse Cloud views, ensure that the SAP Analytics Cloud service and the SAP Data Warehouse Cloud service are connected and a live data connection is established.
+To connect the SAP Analytics Cloud Spend Analysis visualization layer to the SAP Datasphere views, ensure that the SAP Analytics Cloud service and the SAP Datasphere service are connected and a live data connection is established.
 
 To establish a connection between the two services, you need an administrator for the SAP Analytics Cloud tenant.
 
-Follow the steps described at [Live Data Connections to SAP Data Warehouse Cloud](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/00f68c2e08b941f081002fd3691d86a7/ad4281e2875949f0b4d45d1072ff4c38.html) to establish trust between SAP Analytics Cloud and Data Warehouse Cloud.
+Follow the steps described at [Live Data Connections to SAP Datasphere](https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/00f68c2e08b941f081002fd3691d86a7/ad4281e2875949f0b4d45d1072ff4c38.html) to establish trust between SAP Analytics Cloud and Datasphere.
 
 In particular, make sure that you perform the following tasks:
-- Establish a live connection to SAP Data Warehouse Cloud.
+- Establish a live connection to SAP Datasphere.
 - Name the connection “SAPDWC”. 
-- Verify that the views are displayed in SAP Data Warehouse Cloud from SAP Analytics Cloud.
+- Verify that the views are displayed in SAP Datasphere from SAP Analytics Cloud.
 
 Note: This naming convention for the connection is required for SAP Analytics Cloud business content.
 
