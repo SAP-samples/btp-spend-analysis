@@ -1,8 +1,8 @@
 ## Overview of Integration Flows
 
-The scenario needs to populate 10 SAP Data Warehouse Cloud tables with SAP Ariba data.
+The scenario needs to populate 10 SAP Datasphere tables with SAP Ariba data.
 
-Note that for each table, 6 integration flows are required that accomplish the data transfer.  In the following list, you find the naming convention for these 6 artifacts and the purpose of each ( **_ARIBATABLE_** is a placeholder for the table in Data Warehouse Cloud)
+Note that for each table, 6 integration flows are required that accomplish the data transfer.  In the following list, you find the naming convention for these 6 artifacts and the purpose of each ( **_ARIBATABLE_** is a placeholder for the table in Datasphere)
 
 1. **_ARIBATABLE_**_1_AribaJobSubmit:   Submits the initial Job using ViewTemplateName to Ariba. 
 
@@ -24,7 +24,7 @@ Note that for each table, 6 integration flows are required that accomplish the d
 6. **_ARIBATABLE_**_6_AribaPayloadWriteDB: 
 - Sends the corrected GET request built in integration flow 5 to SAP Ariba.
 - Retrieves the .zip file from SAP Ariba and unzips it.
-- Splits the payload into manageable chunks and sends the data in XML format to a temporary table in SAP Data Warehouse Cloud.
+- Splits the payload into manageable chunks and sends the data in XML format to a temporary table in SAP Datasphere.
 - Repeats this process until all .zip files from the reponse have been processed
   
   
