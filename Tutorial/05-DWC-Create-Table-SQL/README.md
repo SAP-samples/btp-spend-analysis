@@ -1,7 +1,7 @@
-## SAP Data Warehouse Cloud Create Table Scripts
+## SAP Datasphere Create Table Scripts
 
 As a next step, the following tasks are to be performed:
-- Building the SAP HANA Cloud base tables in in the SAP Data Warehouse Cloud system
+- Building the SAP HANA Cloud base tables in in the SAP Datasphere system
 - Building the stored procedures that handle parts of the data orchestration
 
 Download or copy the following 10 SQL Scripts 
@@ -23,7 +23,7 @@ The other 10 scripts will create the temporary tables and stored procedures for 
 
 Perform the following steps for each SQL Script:
 
-1. Navigate to the **SAP_Content** Space in your SAP Data Warehouse Cloud system
+1. Navigate to the **SAP_Content** Space in your SAP Datasphere system
 2. Navigate to **Space Management** -> **Database Users** section.  Select the previously created database user and launch **Open Database Explorer**.  A new tab with the SAP HANA Database Explorer for SAP HANA Cockpit is opened.
 3. Open a new SQL Console.
 4. Paste the SQL Script from the one of the downloaded files
