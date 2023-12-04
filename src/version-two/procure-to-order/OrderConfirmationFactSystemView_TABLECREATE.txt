@@ -1,0 +1,29 @@
+/*DROP TABLE SCRIPTS IF NEED TO RERUN TABLE CREATES*/
+/*
+DROP TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."OrderConfirmationFactSystemView";	
+*/
+
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."OrderConfirmationFactSystemView"(	
+"LoadCreateTime" NVARCHAR(5000),
+"LoadUpdateTime" NVARCHAR(5000),
+"OCId" NVARCHAR(5000),
+"OCLineNumber" NVARCHAR(5000),
+"OrderId" NVARCHAR(5000),
+"OrderLineNumber" NVARCHAR(5000),
+"NumberConfirmedAccepted" NVARCHAR(5000),
+"NumberConfirmedAcceptedWithChanges" NVARCHAR(5000),
+"NumberConfirmedRejected" NVARCHAR(5000),
+"NumberConfirmedBackOrdered" NVARCHAR(5000),
+"NumberConfirmedSubstituted" NVARCHAR(5000),
+"DeliveryDate" NVARCHAR(5000),
+"ShipmentDate" NVARCHAR(5000),
+"Description" NVARCHAR(5000),
+"Amount" NVARCHAR(5000),
+"Shipping" NVARCHAR(5000),
+"Tax" NVARCHAR(5000),
+"OrderConfirmationDate" NVARCHAR(5000),
+"SourceSystem"  NVARCHAR(5000)
+);
+
+--ALTER TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."OrderConfirmationFactSystemView"
+--ADD PRIMARY KEY("", "", "");

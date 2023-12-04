@@ -1,0 +1,76 @@
+											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES" (JOB_KEY varchar(20), JOB_FILE_NAME CLOB);											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_XML" (FILENAME varchar(20), FILECONTENT CLOB);											
+											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_OrderConfirmationFactSystemView_FILES (											
+		IN JOB_KEY varchar(20),									
+		IN JOB_FILE_NAME CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+	DECLARE counter int;										
+	DECLARE V_JFN_SOURCE CLOB;										
+	DECLARE V_JFN_TARGET CLOB;										
+											
+	SELECT count(*) INTO counter FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES";										
+	IF :counter = 0 										
+	THEN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES" VALUES ( JOB_KEY, JOB_FILE_NAME);									
+	ELSE										
+		SELECT top 1 JOB_FILE_NAME INTO V_JFN_SOURCE FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES";									
+		V_JFN_TARGET  = CONCAT(:V_JFN_SOURCE, JOB_FILE_NAME);									
+		Truncate table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES";									
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES" VALUES ( JOB_KEY, V_JFN_TARGET);									
+	END IF;										
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.GET_TEMP_OrderConfirmationFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		SELECT "JOB_KEY","JOB_FILE_NAME" FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.TRUNC_TEMP_OrderConfirmationFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_OrderConfirmationFactSystemView_XML (											
+		IN FILENAME varchar(20),									
+		IN FILECONTENT CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_XML" VALUES (									
+				FILENAME,							
+				FILECONTENT);							
+											
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."OrderConfirmationFactSystemView" (									
+			SELECT * FROM								
+				XMLTABLE('resultset/row' PASSING							
+				SAP_CONTENT#ARIBA_SPEND_ANALYSIS."TEMP_OrderConfirmationFactSystemView_XML"."FILECONTENT"							
+				COLUMNS							
+					"LoadCreateTime" NVARCHAR(5000) PATH  'LoadCreateTime',
+					"LoadUpdateTime" NVARCHAR(5000) PATH  'LoadUpdateTime',
+					"OCId" NVARCHAR(5000) PATH  'OCId',
+					"OCLineNumber" NVARCHAR(5000) PATH  'OCLineNumber',
+					"OrderId" NVARCHAR(5000) PATH  'OrderId',
+					"OrderLineNumber" NVARCHAR(5000) PATH  'OrderLineNumber',
+					"NumberConfirmedAccepted" NVARCHAR(5000) PATH  'NumberConfirmedAccepted',
+					"NumberConfirmedAcceptedWithChanges" NVARCHAR(5000) PATH  'NumberConfirmedAcceptedWithChanges',
+					"NumberConfirmedRejected" NVARCHAR(5000) PATH  'NumberConfirmedRejected',
+					"NumberConfirmedBackOrdered" NVARCHAR(5000) PATH  'NumberConfirmedBackOrdered',
+					"NumberConfirmedSubstituted" NVARCHAR(5000) PATH  'NumberConfirmedSubstituted',
+					"DeliveryDate" NVARCHAR(5000) PATH  'DeliveryDate',
+					"ShipmentDate" NVARCHAR(5000) PATH  'ShipmentDate',
+					"Description" NVARCHAR(5000) PATH  'Description',
+					"Amount" NVARCHAR(5000) PATH  'Amount',
+					"Shipping" NVARCHAR(5000) PATH  'Shipping',
+					"Tax" NVARCHAR(5000) PATH  'Tax',
+					"OrderConfirmationDate" NVARCHAR(5000) PATH  'OrderConfirmationDate',
+					"SourceSystem" NVARCHAR(5000) PATH  'SourceSystem'
+			) as XTABLE								
+		);				
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_OrderConfirmationFactSystemView_XML"; 									
+	END;										
+---------------------------											

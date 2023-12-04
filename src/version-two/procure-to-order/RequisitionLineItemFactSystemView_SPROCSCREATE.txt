@@ -1,0 +1,161 @@
+											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES" (JOB_KEY varchar(20), JOB_FILE_NAME CLOB);											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_XML" (FILENAME varchar(20), FILECONTENT CLOB);											
+											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_RequisitionLineItemFactSystemView_FILES (											
+		IN JOB_KEY varchar(20),									
+		IN JOB_FILE_NAME CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+	DECLARE counter int;										
+	DECLARE V_JFN_SOURCE CLOB;										
+	DECLARE V_JFN_TARGET CLOB;										
+											
+	SELECT count(*) INTO counter FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES";										
+	IF :counter = 0 										
+	THEN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES" VALUES ( JOB_KEY, JOB_FILE_NAME);									
+	ELSE										
+		SELECT top 1 JOB_FILE_NAME INTO V_JFN_SOURCE FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES";									
+		V_JFN_TARGET  = CONCAT(:V_JFN_SOURCE, JOB_FILE_NAME);									
+		Truncate table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES";									
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES" VALUES ( JOB_KEY, V_JFN_TARGET);									
+	END IF;										
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.GET_TEMP_RequisitionLineItemFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		SELECT "JOB_KEY","JOB_FILE_NAME" FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.TRUNC_TEMP_RequisitionLineItemFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_RequisitionLineItemFactSystemView_XML (											
+		IN FILENAME varchar(20),									
+		IN FILECONTENT CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_XML" VALUES (									
+				FILENAME,							
+				FILECONTENT);							
+											
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."RequisitionLineItemFactSystemView" (								
+			SELECT * FROM								
+				XMLTABLE('resultset/row' PASSING							
+				SAP_CONTENT#ARIBA_SPEND_ANALYSIS."TEMP_RequisitionLineItemFactSystemView_XML"."FILECONTENT"							
+				COLUMNS							
+					"LoadCreateTime" NVARCHAR(5000) PATH  'LoadCreateTime',
+					"LoadUpdateTime" NVARCHAR(5000) PATH 'LoadUpdateTime',
+					"RequisitionId" NVARCHAR(5000) PATH 'RequisitionId',
+					"RequisitionLineNumber" NVARCHAR(5000) PATH 'RequisitionLineNumber',
+					"SplitAccountingNumber" NVARCHAR(5000) PATH 'SplitAccountingNumber',
+					"ParentLineNumber" NVARCHAR(5000) PATH 'ParentLineNumber',
+					"Description" NVARCHAR(5000) PATH 'Description',
+					"RetroEffectiveDate" NVARCHAR(5000) PATH 'RetroEffectiveDate',
+					"StatusString" NVARCHAR(5000) PATH 'StatusString',
+					"CustomSubStatusMessage" NVARCHAR(5000) PATH 'CustomSubStatusMessage',
+					"TitleString" NVARCHAR(5000) PATH 'TitleString',
+					"POId" NVARCHAR(5000) PATH 'POId',
+					"OrderID" NVARCHAR(5000) PATH 'OrderID',
+					"POLineNumber" NVARCHAR(5000) PATH 'POLineNumber',
+					"ServiceStartDate" NVARCHAR(5000) PATH 'ServiceStartDate',
+					"ServiceEndDate" NVARCHAR(5000) PATH 'ServiceEndDate',
+					"RequiresServiceEntry" NVARCHAR(5000) PATH 'RequiresServiceEntry',
+					"isPunchOutItem" NVARCHAR(5000) PATH 'isPunchOutItem',
+					"IsRetroactive" NVARCHAR(5000) PATH 'IsRetroactive',
+					"ApprovedDate" NVARCHAR(5000) PATH 'ApprovedDate',
+					"ReqApprovedDate" NVARCHAR(5000) PATH 'ReqApprovedDate',
+					"IsExternalAppDocumentCopy" NVARCHAR(5000) PATH 'IsExternalAppDocumentCopy',
+					"isBoughtFromPreferredSupplier" NVARCHAR(5000) PATH 'isBoughtFromPreferredSupplier',
+					"isPartialItem" NVARCHAR(5000) PATH 'isPartialItem',
+					"isShared" NVARCHAR(5000) PATH 'isShared',
+					"SubmittedBy" NVARCHAR(5000) PATH 'SubmittedBy',
+					"isTeamReceived" NVARCHAR(5000) PATH 'isTeamReceived',
+					"PriceVarCost" NVARCHAR(5000) PATH 'PriceVarCost',
+					"Amount" NVARCHAR(5000) PATH 'Amount',
+					"OrigCurrencyCode" NVARCHAR(5000) PATH 'OrigCurrencyCode',
+					"OrigAmount" NVARCHAR(5000) PATH 'OrigAmount',
+					"MaxAmount" NVARCHAR(5000) PATH 'MaxAmount',
+					"ExpectedAmount" NVARCHAR(5000) PATH 'ExpectedAmount',
+					"LineItemCount" NVARCHAR(5000) PATH 'LineItemCount',
+					"RequisitionCount" NVARCHAR(5000) PATH 'RequisitionCount',
+					"Quantity" NVARCHAR(5000) PATH 'Quantity',
+					"TaxAmount" NVARCHAR(5000) PATH 'TaxAmount',
+					"ChargeAmount" NVARCHAR(5000) PATH 'ChargeAmount',
+					"RequisitionDate" NVARCHAR(5000) PATH 'RequisitionDate',
+					"UNSPSC" NVARCHAR(5000) PATH 'UNSPSC',
+					"Commodity" NVARCHAR(5000) PATH 'Commodity',
+					"Supplier" NVARCHAR(5000) PATH 'Supplier',
+					"PaymentTerms" NVARCHAR(5000) PATH 'PaymentTerms',
+					"TaxCodeName" NVARCHAR(5000) PATH 'TaxCodeName',
+					"TaxCodeId" NVARCHAR(5000) PATH 'TaxCodeId',
+					"TaxCodeDescription" NVARCHAR(5000) PATH 'TaxCodeDescription',
+					"Part" NVARCHAR(5000) PATH 'Part',
+					"NonCatalogSupplierPartNumber" NVARCHAR(5000) PATH 'NonCatalogSupplierPartNumber',
+					"NonCatalogSupplierPartAuxiliaryId" NVARCHAR(5000) PATH 'NonCatalogSupplierPartAuxiliaryId',
+					"UnitOfMeasure" NVARCHAR(5000) PATH 'UnitOfMeasure',
+					"PriceBasisQuantity" NVARCHAR(5000) PATH 'PriceBasisQuantity',
+					"PriceBasisQuantityUOM" NVARCHAR(5000) PATH 'PriceBasisQuantityUOM',
+					"ConversionFactor" NVARCHAR(5000) PATH 'ConversionFactor',
+					"PriceBasisQuantityDesc" NVARCHAR(5000) PATH 'PriceBasisQuantityDesc',
+					"OrigSystem" NVARCHAR(5000) PATH 'OrigSystem',
+					"OrigSystemRefID" NVARCHAR(5000) PATH 'OrigSystemRefID',
+					"ERPCommodity" NVARCHAR(5000) PATH 'ERPCommodity',
+					"CompanyCode" NVARCHAR(5000) PATH 'CompanyCode',
+					"CostCenter" NVARCHAR(5000) PATH 'CostCenter',
+					"AccountingCompany" NVARCHAR(5000) PATH 'AccountingCompany',
+					"PurchasingCompany" NVARCHAR(5000) PATH 'PurchasingCompany',
+					"SubAccount" NVARCHAR(5000) PATH 'SubAccount',
+					"AccountingRegion" NVARCHAR(5000) PATH 'AccountingRegion',
+					"AccountingProject" NVARCHAR(5000) PATH 'AccountingProject',
+					"Product" NVARCHAR(5000) PATH 'Product',
+					"Asset" NVARCHAR(5000) PATH 'Asset',
+					"InternalOrder" NVARCHAR(5000) PATH 'InternalOrder',
+					"Network" NVARCHAR(5000) PATH 'Network',
+					"ActivityNumber" NVARCHAR(5000) PATH 'ActivityNumber',
+					"StatisticsCode" NVARCHAR(5000) PATH 'StatisticsCode',
+					"ProcurementUnit" NVARCHAR(5000) PATH 'ProcurementUnit',
+					"ShipToLocation" NVARCHAR(5000) PATH 'ShipToLocation',
+					"Requester" NVARCHAR(5000) PATH 'Requester',
+					"Preparer" NVARCHAR(5000) PATH 'Preparer',
+					"Account" NVARCHAR(5000) PATH 'Account',
+					"HoldTillDate" NVARCHAR(5000) PATH 'HoldTillDate',
+					"DeliverTo" NVARCHAR(5000) PATH 'DeliverTo',
+					"AggregationStatus" NVARCHAR(5000) PATH 'AggregationStatus',
+					"IsHeld" NVARCHAR(5000) PATH 'IsHeld',
+					"ERPRequisitionID" NVARCHAR(5000) PATH 'ERPRequisitionID',
+					"NeedByDate" NVARCHAR(5000) PATH 'NeedByDate',
+					"AccountType" NVARCHAR(5000) PATH 'AccountType',
+					"SourcingStatus" NVARCHAR(5000) PATH 'SourcingStatus',
+					"SourcingStatusMessage" NVARCHAR(5000) PATH 'SourcingStatusMessage',
+					"SubType" NVARCHAR(5000) PATH 'SubType',
+					"BillToLocation" NVARCHAR(5000) PATH 'BillToLocation',
+					"PurchasingGroup" NVARCHAR(5000) PATH 'PurchasingGroup',
+					"AccountAssignment" NVARCHAR(5000) PATH 'AccountAssignment',
+					"ItemCategory" NVARCHAR(5000) PATH 'ItemCategory',
+					"LineType" NVARCHAR(5000) PATH 'LineType',
+					"Contract" NVARCHAR(5000) PATH 'Contract',
+					"SourceSystem" NVARCHAR(5000) PATH 'SourceSystem',
+					"BudgetCode" NVARCHAR(5000) PATH 'BudgetCode',
+					"BudgetPeriod" NVARCHAR(5000) PATH 'BudgetPeriod',
+					"BudgetFiscalYear" NVARCHAR(5000) PATH 'BudgetFiscalYear',
+					"ProjectID" NVARCHAR(5000) PATH 'ProjectID',
+					"ProjectTitle" NVARCHAR(5000) PATH 'ProjectTitle',
+					"MarketPlaceItemSupplierId" NVARCHAR(5000) PATH 'MarketPlaceItemSupplierId',
+					"SubContractor" NVARCHAR(5000) PATH 'SubContractor',
+					"ReleasedAmount" NVARCHAR(5000) PATH 'ReleasedAmount',
+					"ConsumedAmount" NVARCHAR(5000) PATH 'ConsumedAmount',
+					"DiscountAmount" NVARCHAR(5000) PATH 'DiscountAmount',
+					"ApprovalTime" NVARCHAR(5000) PATH 'ApprovalTime',
+					"ClassificationCodeAux" NVARCHAR(5000) PATH 'ClassificationCodeAux'
+			) as XTABLE								
+		);					
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_RequisitionLineItemFactSystemView_XML"; 									
+	END;										
+---------------------------											

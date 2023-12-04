@@ -1,0 +1,120 @@
+											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES" (JOB_KEY varchar(20), JOB_FILE_NAME CLOB);											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_XML" (FILENAME varchar(20), FILECONTENT CLOB);											
+											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_ContractFactFactSystemView_FILES (											
+		IN JOB_KEY varchar(20),									
+		IN JOB_FILE_NAME CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+	DECLARE counter int;										
+	DECLARE V_JFN_SOURCE CLOB;										
+	DECLARE V_JFN_TARGET CLOB;										
+											
+	SELECT count(*) INTO counter FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES";										
+	IF :counter = 0 										
+	THEN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES" VALUES ( JOB_KEY, JOB_FILE_NAME);									
+	ELSE										
+		SELECT top 1 JOB_FILE_NAME INTO V_JFN_SOURCE FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES";									
+		V_JFN_TARGET  = CONCAT(:V_JFN_SOURCE, JOB_FILE_NAME);									
+		Truncate table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES";									
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES" VALUES ( JOB_KEY, V_JFN_TARGET);									
+	END IF;										
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.GET_TEMP_ContractFactFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		SELECT "JOB_KEY","JOB_FILE_NAME" FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.TRUNC_TEMP_ContractFactFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_ContractFactFactSystemView_XML (											
+		IN FILENAME varchar(20),									
+		IN FILECONTENT CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_XML" VALUES (									
+				FILENAME,							
+				FILECONTENT);							
+											
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."ContractFactFactSystemView" (									
+			SELECT * FROM								
+				XMLTABLE('resultset/row' PASSING							
+				SAP_CONTENT#ARIBA_SPEND_ANALYSIS."TEMP_ContractFactFactSystemView_XML"."FILECONTENT"							
+				COLUMNS							
+						"LoadCreateTime" NVARCHAR(5000) PATH  'LoadCreateTime',
+						"LoadUpdateTime" NVARCHAR(5000) PATH 'LoadUpdateTime',
+						"ContractId" NVARCHAR(5000) PATH 'ContractId',
+						"ContractRequestId" NVARCHAR(5000) PATH 'ContractRequestId',
+						"DaysLeft" NVARCHAR(5000) PATH 'DaysLeft',
+						"VersionNumber" NVARCHAR(5000) PATH 'VersionNumber',
+						"Description" NVARCHAR(5000) PATH 'Description',
+						"RelatedContractId" NVARCHAR(5000) PATH 'RelatedContractId',
+						"Tolerance" NVARCHAR(5000) PATH 'Tolerance',
+						"AmountPercentLeft" NVARCHAR(5000) PATH 'AmountPercentLeft',
+						"AmountPercentLeftRange" NVARCHAR(5000) PATH 'AmountPercentLeftRange',
+						"AmountReconciledPercentLeft" NVARCHAR(5000) PATH 'AmountReconciledPercentLeft',
+						"AmountReconciledPercentLeftRange" NVARCHAR(5000) PATH 'AmountReconciledPercentLeftRange',
+						"AmountInvoicedPercentLeft" NVARCHAR(5000) PATH 'AmountInvoicedPercentLeft',
+						"AmountInvoicedPercentLeftRange" NVARCHAR(5000) PATH 'AmountInvoicedPercentLeftRange',
+						"EffectiveDate" NVARCHAR(5000) PATH 'EffectiveDate',
+						"ExpirationDate" NVARCHAR(5000) PATH 'ExpirationDate',
+						"Contract" NVARCHAR(5000) PATH 'Contract',
+						"ParentContract" NVARCHAR(5000) PATH 'ParentContract',
+						"Contact" NVARCHAR(5000) PATH 'Contact',
+						"Supplier" NVARCHAR(5000) PATH 'Supplier',
+						"Status" NVARCHAR(5000) PATH 'Status',
+						"Scope" NVARCHAR(5000) PATH 'Scope',
+						"Expiry" NVARCHAR(5000) PATH 'Expiry',
+						"ReleaseType" NVARCHAR(5000) PATH 'ReleaseType',
+						"IsInvoiceable" NVARCHAR(5000) PATH 'IsInvoiceable',
+						"IsReceivable" NVARCHAR(5000) PATH 'IsReceivable',
+						"ContractType" NVARCHAR(5000) PATH 'ContractType',
+						"CompanyCode" NVARCHAR(5000) PATH 'CompanyCode',
+						"ProcurementUnit" NVARCHAR(5000) PATH 'ProcurementUnit',
+						"SourceSystem" NVARCHAR(5000) PATH 'SourceSystem',
+						"DefaultRequesterOnInvoiceFromContract" NVARCHAR(5000) PATH 'DefaultRequesterOnInvoiceFromContract',
+						"AllowInvoiceUnitPriceEditable" NVARCHAR(5000) PATH 'AllowInvoiceUnitPriceEditable',
+						"AllowNonCatalogOnInvoice" NVARCHAR(5000) PATH 'AllowNonCatalogOnInvoice',
+						"AllowSupplierEditInvoiceAccounting" NVARCHAR(5000) PATH 'AllowSupplierEditInvoiceAccounting',
+						"ExcludeTaxesOnAvailableAmount" NVARCHAR(5000) PATH 'ExcludeTaxesOnAvailableAmount',
+						"ExcludeChargesOnAvailableAmount" NVARCHAR(5000) PATH 'ExcludeChargesOnAvailableAmount',
+						"AmountReconciledWithoutTCPercentLeft" NVARCHAR(5000) PATH 'AmountReconciledWithoutTCPercentLeft',
+						"AmountInvoicedWithoutTCPercentLeft" NVARCHAR(5000) PATH 'AmountInvoicedWithoutTCPercentLeft',
+						"Duration" NVARCHAR(5000) PATH 'Duration',
+						"UsedAmount" NVARCHAR(5000) PATH 'UsedAmount',
+						"OrigCurrencyCode" NVARCHAR(5000) PATH 'OrigCurrencyCode',
+						"OrigUsedAmount" NVARCHAR(5000) PATH 'OrigUsedAmount',
+						"AmountOrderedCumulated" NVARCHAR(5000) PATH 'AmountOrderedCumulated',
+						"OrigAmountOrderedCumulated" NVARCHAR(5000) PATH 'OrigAmountOrderedCumulated',
+						"AmountReconciled" NVARCHAR(5000) PATH 'AmountReconciled',
+						"OrigAmountReconciled" NVARCHAR(5000) PATH 'OrigAmountReconciled',
+						"AmountReconciledCumulated" NVARCHAR(5000) PATH 'AmountReconciledCumulated',
+						"OrigAmountReconciledCumulated" NVARCHAR(5000) PATH 'OrigAmountReconciledCumulated',
+						"AmountInvoiced" NVARCHAR(5000) PATH 'AmountInvoiced',
+						"OrigAmountInvoiced" NVARCHAR(5000) PATH 'OrigAmountInvoiced',
+						"AmountInvoicedCumulated" NVARCHAR(5000) PATH 'AmountInvoicedCumulated',
+						"OrigAmountInvoicedCumulated" NVARCHAR(5000) PATH 'OrigAmountInvoicedCumulated',
+						"AmountLeft" NVARCHAR(5000) PATH 'AmountLeft',
+						"OrigAmountLeft" NVARCHAR(5000) PATH 'OrigAmountLeft',
+						"MinCommitment" NVARCHAR(5000) PATH 'MinCommitment',
+						"OrigMinCommitment" NVARCHAR(5000) PATH 'OrigMinCommitment',
+						"MaxCommitment" NVARCHAR(5000) PATH 'MaxCommitment',
+						"OrigMaxCommitment" NVARCHAR(5000) PATH 'OrigMaxCommitment',
+						"AmountReconciledWithoutTaxesAndCharges" NVARCHAR(5000) PATH 'AmountReconciledWithoutTaxesAndCharges',
+						"AmountInvoicedWithoutTaxesAndCharges" NVARCHAR(5000) PATH 'AmountInvoicedWithoutTaxesAndCharges',
+						"OrigAmountReconciledWithoutTaxesAndCharges" NVARCHAR(5000) PATH 'OrigAmountReconciledWithoutTaxesAndCharges',
+						"OrigAmountInvoicedWithoutTaxesAndCharges" NVARCHAR(5000) PATH 'OrigAmountInvoicedWithoutTaxesAndCharges'
+			) as XTABLE
+                ); 												
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_ContractFactFactSystemView_XML"; 									
+	END;										
+---------------------------											

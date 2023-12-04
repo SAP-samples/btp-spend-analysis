@@ -1,0 +1,35 @@
+/*DROP TABLE SCRIPTS IF NEED TO RERUN TABLE CREATES*/
+/*
+DROP TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."PODeliveryFactSystemView";	
+*/
+
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."PODeliveryFactSystemView"(	
+"LoadCreateTime" NVARCHAR(5000),
+"LoadUpdateTime" NVARCHAR(5000),
+"POId" NVARCHAR(5000),
+"OrderID" NVARCHAR(5000),
+"POName" NVARCHAR(5000),
+"ProcurementUnit" NVARCHAR(5000),
+"Amount" NVARCHAR(5000),
+"ConfirmationTime" NVARCHAR(5000),
+"DeliveryTime" NVARCHAR(5000),
+"ReceiptTime" NVARCHAR(5000),
+"InvoiceTime" NVARCHAR(5000),
+"OnTimeDeliveryShip" NVARCHAR(5000),
+"OnTimeDeliveryReceipt" NVARCHAR(5000),
+"OnTimeOrLate" NVARCHAR(5000),
+"BackOrderedItems" NVARCHAR(5000),
+"RejectedItems" NVARCHAR(5000),
+"SubstitutedItems" NVARCHAR(5000),
+"OrderConfirmation" NVARCHAR(5000),
+"AdvancedShipNotice" NVARCHAR(5000),
+"Receipt" NVARCHAR(5000),
+"OrderedDate" NVARCHAR(5000),
+"NeedByDate" NVARCHAR(5000),
+"Supplier" NVARCHAR(5000),
+"Requester" NVARCHAR(5000),
+"SourceSystem" NVARCHAR(5000)
+);
+
+--ALTER TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."PODeliveryFactSystemView"
+--ADD PRIMARY KEY("", "", "");

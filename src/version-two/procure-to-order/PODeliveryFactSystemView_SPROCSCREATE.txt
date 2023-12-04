@@ -1,0 +1,82 @@
+											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES" (JOB_KEY varchar(20), JOB_FILE_NAME CLOB);											
+CREATE COLUMN TABLE "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_XML" (FILENAME varchar(20), FILECONTENT CLOB);											
+											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_PODeliveryFactSystemView_FILES (											
+		IN JOB_KEY varchar(20),									
+		IN JOB_FILE_NAME CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+	DECLARE counter int;										
+	DECLARE V_JFN_SOURCE CLOB;										
+	DECLARE V_JFN_TARGET CLOB;										
+											
+	SELECT count(*) INTO counter FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES";										
+	IF :counter = 0 										
+	THEN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES" VALUES ( JOB_KEY, JOB_FILE_NAME);									
+	ELSE										
+		SELECT top 1 JOB_FILE_NAME INTO V_JFN_SOURCE FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES";									
+		V_JFN_TARGET  = CONCAT(:V_JFN_SOURCE, JOB_FILE_NAME);									
+		Truncate table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES";									
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES" VALUES ( JOB_KEY, V_JFN_TARGET);									
+	END IF;										
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.GET_TEMP_PODeliveryFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		SELECT "JOB_KEY","JOB_FILE_NAME" FROM "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.TRUNC_TEMP_PODeliveryFactSystemView_FILES ()											
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_FILES";									
+END;											
+----------------------------------------											
+CREATE OR REPLACE PROCEDURE SAP_CONTENT#ARIBA_SPEND_ANALYSIS.PUT_TEMP_PODeliveryFactSystemView_XML (											
+		IN FILENAME varchar(20),									
+		IN FILECONTENT CLOB)									
+	LANGUAGE SQLSCRIPT AS										
+	BEGIN										
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_XML" VALUES (									
+				FILENAME,							
+				FILECONTENT);							
+											
+		INSERT INTO "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."PODeliveryFactSystemView" (								
+			SELECT * FROM								
+				XMLTABLE('resultset/row' PASSING							
+				SAP_CONTENT#ARIBA_SPEND_ANALYSIS."TEMP_PODeliveryFactSystemView_XML"."FILECONTENT"							
+				COLUMNS							
+					"LoadCreateTime" NVARCHAR(5000) PATH  'LoadCreateTime',
+					"LoadUpdateTime" NVARCHAR(5000) PATH  'LoadUpdateTime',
+					"POId" NVARCHAR(5000) PATH  'POId',
+					"OrderID" NVARCHAR(5000) PATH  'OrderID',
+					"POName" NVARCHAR(5000) PATH  'POName',
+					"ProcurementUnit" NVARCHAR(5000) PATH  'ProcurementUnit',
+					"Amount" NVARCHAR(5000) PATH  'Amount',
+					"ConfirmationTime" NVARCHAR(5000) PATH  'ConfirmationTime',
+					"DeliveryTime" NVARCHAR(5000) PATH  'DeliveryTime',
+					"ReceiptTime" NVARCHAR(5000) PATH  'ReceiptTime',
+					"InvoiceTime" NVARCHAR(5000) PATH  'InvoiceTime',
+					"OnTimeDeliveryShip" NVARCHAR(5000) PATH  'OnTimeDeliveryShip',
+					"OnTimeDeliveryReceipt" NVARCHAR(5000) PATH  'OnTimeDeliveryReceipt',
+					"OnTimeOrLate" NVARCHAR(5000) PATH  'OnTimeOrLate',
+					"BackOrderedItems" NVARCHAR(5000) PATH  'BackOrderedItems',
+					"RejectedItems" NVARCHAR(5000) PATH  'RejectedItems',
+					"SubstitutedItems" NVARCHAR(5000) PATH  'SubstitutedItems',
+					"OrderConfirmation" NVARCHAR(5000) PATH  'OrderConfirmation',
+					"AdvancedShipNotice" NVARCHAR(5000) PATH  'AdvancedShipNotice',
+					"Receipt" NVARCHAR(5000) PATH  'Receipt',
+					"OrderedDate" NVARCHAR(5000) PATH  'OrderedDate',
+					"NeedByDate" NVARCHAR(5000) PATH  'NeedByDate',
+					"Supplier" NVARCHAR(5000) PATH  'Supplier',
+					"Requester" NVARCHAR(5000) PATH  'Requester',
+					"SourceSystem" NVARCHAR(5000) PATH  'SourceSystem'
+			) as XTABLE						
+		);				
+		Truncate Table "SAP_CONTENT#ARIBA_SPEND_ANALYSIS"."TEMP_PODeliveryFactSystemView_XML"; 									
+	END;										
+---------------------------											
