@@ -11,6 +11,8 @@ SAP Integration Suite connects and contextualizes processes and data while enabl
 
 [Cloud Integration Suite Help](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_INTEGRATION_SUITE/51ab953548be4459bfe8539ecaeee98d/5cc6987511104c418b7cb4c25f3d9cb0.html)
 
+Disclaimer/Prerequisites: This mission currently supports Business Content version up to 1.1.0. An update to the mission is in progress for version 1.2.0.
+
 ## Datasphere Prerequisites
 
 SAP Datasphere is an all-in-one cloud product offered as software as a service (SaaS) for data management and storage. It is used as the data foundation layer for the SAP Ariba Spend Analytics solution. Ensure that you have access to SAP Datasphere and that you have a user with either Administrator or Space Administrator role. This use is needed to import the business content from SAP for Spend. 
