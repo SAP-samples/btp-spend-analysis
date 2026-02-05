@@ -4,7 +4,7 @@ Before you can import any SAP or partner content package, the space into which t
 
 Note or Instruction on using different space other than SAP_CONTENT:
 
-> You can also import the business content package into a different customer space e.g. *SAP_ARIBA* other than *SAP_CONTENT* space by going into *Import Options* Space Mapping drop-down box to selected the required space. In the mission we have content created based on the space name *SAP_CONTENT* same can be replaced with customer space name e.g. *SAP_ARIBA* etc.
+> You can also import the business content package into a different customer space e.g. *SAP_ARIBA* other than *SAP_CONTENT* space by going into *Import Options*, Space Mapping column with the  drop-down box to select the required space. In the mission we have content created based on the space name *SAP_CONTENT* same can be replaced with customer space name e.g. *SAP_ARIBA* etc.
 
  Therefore, create a space with the technical name “SAP_CONTENT” before you can import any content package. Use the description “SAP Content”. In addition, assign the user that is to import the content to the space SAP_CONTENT
 
