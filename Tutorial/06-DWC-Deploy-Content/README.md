@@ -2,7 +2,7 @@
 
 With the previous steps, you successfully created the SAP HANA Cloud tables (input layer). Now, you can deploy the SAP Datasphere views (harmonization layer and reporting layer).
 
-Navigate to the **Repository Explorer** and Select the **SAP & Partner Content Space**
+Navigate to the **Repository Explorer** and Select the **SAP_CONTENT Space**
 
 ![DWC Deploy](../images/DWCLane_DeployContent1.png) 
 
