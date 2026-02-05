@@ -1,4 +1,4 @@
-## Datasphere Spaces
+## SAP Datasphere Spaces
 
 Before you can import any SAP or partner content package, the space into which the content will imported, needs to be created.   SAP Content is currently imported into the space SAP_CONTENT.
 
